@@ -53,15 +53,27 @@
   var ctx = canvas.getContext('2d');
   ctx.drawImage(img, 0, 0);
   var data = ctx.getImageData(0, 0, 1, ih).data;
+    var sy = 0;
+  var ey = ih;
+  var py = ih;
+  while (py > sy) {
+   var alpha = data[(py - 1) * 4 + 3];
+   if (alpha === 0) {
+    ey = py;
+   } 
+   else {
+    sy = py;
+   }
+   py = (ey + sy) >> 1;
+  }
+  var ratio = (py / ih);
+  return (ratio===0)?1:ratio;
   var canvas = document.getElementById("myCanvas2");
     canvas.width = 500;
     canvas.height = 500;
     var ctx = canvas.getContext("2d");
-    var img = new Image();
-    img.src = "https://www.avera.org/app/files/public/8191a621-99cc-4080-a0a5-ebddf2da57bc/kids-playing-at-a-playground.jpg";
-    img.onload = function() {
-  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-};
+  ctx.drawImage(img, 0, 0);
+  var data = ctx.getImageData(0, 0, 1, ih).data;
   var sy = 0;
   var ey = ih;
   var py = ih;
@@ -150,7 +162,8 @@
         context.font = '20pt Calibri';
         context.fillStyle = "black";
         context.fillText("Original image will go here", 10, 20);
-        canvas id="myCanvas2";
+        var canvas = document.getElementById('myCanvas2');
+        var context = canvas.getContext("2d");
      </script>
 
     </div><!-- /content -->
