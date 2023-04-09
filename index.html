@@ -71,7 +71,7 @@
   var canvas = document.getElementById("myCanvas2");
     canvas.width = 500;
     canvas.height = 500;
-    var ctx = canvas.getContext("2d");
+    var ctx = canvas.getContext('2d');
   ctx.drawImage(img, 0, 0);
   var data = ctx.getImageData(0, 0, 1, ih).data;
   var sy = 0;
