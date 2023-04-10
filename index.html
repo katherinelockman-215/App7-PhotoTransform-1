@@ -14,7 +14,7 @@
  
   Authors in chronological order of contribution:
   Author 1: Timothy E. Riedel
-  Author 2: ?????????
+  Author 2: Katherine Lockman
   
   References:
   http://docs.webplatform.org/wiki/concepts/programming/drawing_images_onto_canvas#Loading_the_image_programmatically
@@ -24,10 +24,10 @@
   http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   
   Brief Description of Goal of Code:
-  blah, blah, blah,
+  This code will change an image from its original appearance to one only showing blue aspects of it.
  
   Known Issues:
-  blah, blah, blah, blah
+Not a well-versed coder, so this may not always work. I know the computer processing time can cause issues.
 -->
 
  <head>
@@ -140,13 +140,13 @@
         context.fillStyle = "black";
         context.fillText("Original image will go here", 10, 20);
      </script>
-      <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
+      <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas> <!-- canvas parameters -->
      <script>
-        var canvas = document.getElementById('myCanvas2');
-        var context = canvas.getContext("2d");
-        context.font = '20pt Calibri';
-        context.fillStyle = "black";
-        context.fillText("Blue image will go here", 10, 20);
+        var canvas = document.getElementById('myCanvas2'); // this is setting up a new canvas called myCanvas2
+        var context = canvas.getContext("2d"); // telling the computer this canvas is 2 dimensional
+        context.font = '20pt Calibri'; // filler text to tell the user that on the second canvas the image will appear with a blue hue
+        context.fillStyle = "black"; // black font
+        context.fillText("Blue image will go here", 10, 20); // font size and text
      </script>
 
     </div><!-- /content -->
