@@ -99,9 +99,24 @@ function detectVerticalSquash(img) {
 
 
          //image processing is below//
+         
          window.onload = function () {
          var fileInput = document.getElementById('fileInput');
-         var messageDisplayArea2 = document.getElementbyId('messageDisplayArea2');
+         var messageDisplayArea = document.getElementbyId('messageDisplayArea2');
+          
+            fileInput.addEventListener('change', function(e) {
+    var file = fileInput.files[0];
+    var imageType = /image.*/;
+    /* if (file.type.match(imageType)) checks that the selected file is indeed an image. */
+    if (file.type.match(imageType)) {
+      /* new FileReader(); and reader.onload start some kind of file reading process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        /* messageDisplayArea.innerHTML not needed but allows you to send a message at this point in the program. */
+        messageDisplayArea.innerHTML = "You picked an image!";
+        /* new Image() and img.onload start some kind of new image creation process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
+        
+          
 // Load the image
 var img = new Image();
 
@@ -137,6 +152,8 @@ img.onload = function() {
   downloadLink.href = canvas.toDataURL("image/png");
   downloadLink.click();
 }; 
+                 drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
+
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
          }
