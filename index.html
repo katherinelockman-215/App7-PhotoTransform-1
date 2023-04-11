@@ -99,43 +99,28 @@ function detectVerticalSquash(img) {
 
 
          //image processing is below//
-         
-         window.onload = function () {
-         var fileInput = document.getElementById('fileInput');
-         var messageDisplayArea = document.getElementbyId('messageDisplayArea2');
-          
-            fileInput.addEventListener('change', function(e) {
-    var file = fileInput.files[0];
-    var imageType = /image.*/;
-    /* if (file.type.match(imageType)) checks that the selected file is indeed an image. */
-    if (file.type.match(imageType)) {
+          var canvas2 = document.getElementById('myCanvas2'); // this is setting up a new canvas called myCanvas2
+          var ctx = canvas.getContext("2d"); // telling the computer this canvas is 2 dimensional
+        
+          var imageData = context.getImageData (0, 0, 600, 500);
+        // this argument requires the image is in the same domain as which it is being executed - https://www.html5canvastutorials.com/advanced/html5-canvas-grayscale-image-colors-tutorial/
+          var data = imageData.data;
+        // this retrieves the image from the original canvas
+         if (file.type.match(imageType)) {
       /* new FileReader(); and reader.onload start some kind of file reading process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
       var reader = new FileReader();
       reader.onload = function(e) {
         /* messageDisplayArea.innerHTML not needed but allows you to send a message at this point in the program. */
         messageDisplayArea.innerHTML = "You picked an image!";
         /* new Image() and img.onload start some kind of new image creation process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
-        
-          
-// Load the image
-var img = new Image();
 
-// Wait for the image to load
-img.onload = function() {
-
-  // This draws the image on the canvas
-  ctx.drawImage(img, 0, 0);
-
-
- // This portion gets the image data of the canvas
-  const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-  // Loop through each pixel in the image data
   for (let i = 0; i < imgData.data.length; i += 4) {
-    // Get the RGB values of the pixel
+          // assign constants to RGB values
+    
     const r = imgData.data[i];
     const g = imgData.data[i + 1];
     const b = imgData.data[i + 2];
+   // Loop through each pixel in the image data *NOTE* this concept and portion of the code was acquired from ChatGBT when I asked how to transform an image in JavaScript to show only its blue aspects.
 
     // Set the pixel to only show the blue pigment
     imgData.data[i] = 0;
@@ -144,15 +129,12 @@ img.onload = function() {
   }
 
   // Put the modified image data back onto the canvas
-  ctx.putImageData(imgData, 0, 0);
-
-  // Save the modified image as a PNG file
-  const downloadLink = document.createElement("a");
-  downloadLink.download = "blue_image.png";
-  downloadLink.href = canvas.toDataURL("image/png");
-  downloadLink.click();
+  ctx2.putImageData(imgData, 0, 0);
+       
+       img.src = reader.result;
+       
+       reader.readAsDataURL(file);
 }; 
-                 drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
 
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
@@ -203,7 +185,7 @@ img.onload = function() {
      
      <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas> <!-- canvas parameters -->
      <script>
-       var canvas = document.getElementById('myCanvas2'); // this is setting up a new canvas called myCanvas2
+       var canvas2 = document.getElementById('myCanvas2'); // this is setting up a new canvas called myCanvas2
        var ctx = canvas.getContext("2d"); // telling the computer this canvas is 2 dimensional
        ctx.font = '20pt Calibri'; // filler text to tell the user that on the second canvas the image will appear with a blue hue
        ctx.fillStyle = "black"; // black font
