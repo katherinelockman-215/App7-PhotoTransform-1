@@ -101,7 +101,7 @@ function detectVerticalSquash(img) {
          //image processing is below//
           var canvas2 = document.getElementById('myCanvas2'); 
             // this is setting up a new canvas called myCanvas2
-          var ctx = canvas.getContext("2d"); 
+          var ctx2 = canvas.getContext("2d"); 
             // telling the computer this canvas is 2 dimensional       
           var imageData = context.getImageData (0, 0, 600, 500);
             // this argument requires the image is in the same domain as which it is being executed - https://www.html5canvastutorials.com/advanced/html5-canvas-grayscale-image-colors-tutorial/
@@ -169,9 +169,9 @@ function detectVerticalSquash(img) {
      <script> // tells the program the script that will be on the second canvas
        var canvas2 = document.getElementById('myCanvas2'); // this is setting up a new canvas called myCanvas2
        var ctx2 = canvas.getContext("2d"); // telling the computer this canvas (canvas 2) is 2 dimensional
-       ctx.font = '20pt Calibri'; // filler text to tell the user that on the second canvas the image will appear with a blue hue
-       ctx.fillStyle = "black"; // black font
-       ctx.fillText("Blue image will go here", 10, 20); // font size and text
+       ctx2.font = '20pt Calibri'; // filler text to tell the user that on the second canvas the image will appear with a blue hue
+       ctx2.fillStyle = "black"; // black font
+       ctx2.fillText("Blue image will go here", 10, 20); // font size and text
     </script> <!-- end of script for myCanvas2-->
     </div>
 
