@@ -99,48 +99,45 @@ function detectVerticalSquash(img) {
 
 
          //image processing is below//
-          var canvas2 = document.getElementById('myCanvas2'); // this is setting up a new canvas called myCanvas2
-          var ctx = canvas.getContext("2d"); // telling the computer this canvas is 2 dimensional
-        
+          var canvas2 = document.getElementById('myCanvas2'); 
+            // this is setting up a new canvas called myCanvas2
+          var ctx = canvas.getContext("2d"); 
+            // telling the computer this canvas is 2 dimensional       
           var imageData = context.getImageData (0, 0, 600, 500);
-        // this argument requires the image is in the same domain as which it is being executed - https://www.html5canvastutorials.com/advanced/html5-canvas-grayscale-image-colors-tutorial/
+            // this argument requires the image is in the same domain as which it is being executed - https://www.html5canvastutorials.com/advanced/html5-canvas-grayscale-image-colors-tutorial/
           var data = imageData.data;
-        // this retrieves the image from the original canvas
-         if (file.type.match(imageType)) {
-      /* new FileReader(); and reader.onload start some kind of file reading process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        /* messageDisplayArea.innerHTML not needed but allows you to send a message at this point in the program. */
-        messageDisplayArea.innerHTML = "You picked an image!";
-        /* new Image() and img.onload start some kind of new image creation process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
+            // this retrieves the image from the original canvas
+          if (file.type.match(imageType)) {
+            /* new FileReader(); and reader.onload start some kind of file reading process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            /* messageDisplayArea.innerHTML not needed but allows you to send a message at this point in the program. */
+          messageDisplayArea.innerHTML = "You picked an image!";
+            /* new Image() and img.onload start some kind of new image creation process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
 
-  for (let i = 0; i < imgData.data.length; i += 4) {
-          // assign constants to RGB values
-    
+    for (let i = 0; i < imgData.data.length; i += 4) {          
+     
+     // assign constants to RGB values
     const r = imgData.data[i];
     const g = imgData.data[i + 1];
-    const b = imgData.data[i + 2];
-   // Loop through each pixel in the image data *NOTE* this concept and portion of the code was acquired from ChatGBT when I asked how to transform an image in JavaScript to show only its blue aspects.
-
-    // Set the pixel to only show the blue pigment
+    const b = imgData.data[i + 2];    
+     
+     // Loop through each pixel in the image data *NOTE* this concept and portion of the code was acquired from ChatGBT when I asked how to transform an image in JavaScript to show only its blue aspects.
+     // Set the pixel to only show the blue pigment
     imgData.data[i] = 0;
     imgData.data[i + 1] = 0;
     imgData.data[i + 2] = b;
   }
 
-  // Put the modified image data back onto the canvas
-  ctx2.putImageData(imgData, 0, 0);
+    ctx2.putImageData(imgData, 0, 0);
+    // Put the modified image data back onto the canvas
        
        img.src = reader.result;
        
        reader.readAsDataURL(file);
 }; 
 
-
-          /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
-         
-          
-      
+          /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */      
           
         } // end of img.onload
         
@@ -180,17 +177,15 @@ function detectVerticalSquash(img) {
         context.fillText("Original image will go here", 10, 20);
       </script>
         
-     
-     <div id ="messageDisplayArea2"></div>
-     
+          
      <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas> <!-- canvas parameters -->
-     <script>
+     <script> // tells the program the script that will be on the second canvas
        var canvas2 = document.getElementById('myCanvas2'); // this is setting up a new canvas called myCanvas2
-       var ctx = canvas.getContext("2d"); // telling the computer this canvas is 2 dimensional
+       var ctx2 = canvas.getContext("2d"); // telling the computer this canvas (canvas 2) is 2 dimensional
        ctx.font = '20pt Calibri'; // filler text to tell the user that on the second canvas the image will appear with a blue hue
        ctx.fillStyle = "black"; // black font
        ctx.fillText("Blue image will go here", 10, 20); // font size and text
-    </script>
+    </script> <!-- end of script for myCanvas2-->
     </div>
 
     <div data-role="footer" data-position="fixed">
