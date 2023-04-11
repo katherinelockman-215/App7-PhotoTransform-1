@@ -14,7 +14,7 @@
  
   Authors in chronological order of contribution:
   Author 1: Timothy E. Riedel
-  Author 2: ?????????
+  Author 2: Katherine Lockman
   
   References:
   http://docs.webplatform.org/wiki/concepts/programming/drawing_images_onto_canvas#Loading_the_image_programmatically
@@ -24,10 +24,10 @@
   http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   
   Brief Description of Goal of Code:
-  blah, blah, blah,
+  This code will transcribe a loaded image to only show its blue pigment.
  
   Known Issues:
-  blah, blah, blah, blah
+  Not an experienced coder it may not always work.
 -->
 
  <head>
@@ -45,7 +45,7 @@
 
 /* detectVerticalSquash & drawImageIOSFix = are functions that are critical due to a flaw in the iPhone camera software that squishes any photos displayed on an HTML5 canvas element. https://github.com/stomita/ios-imagefile-megapixel
 */
- function detectVerticalSquash(img) {
+function detectVerticalSquash(img) {
   var iw = img.naturalWidth, ih = img.naturalHeight;
   var canvas = document.createElement('canvas');
   canvas.width = 1;
@@ -94,7 +94,8 @@
         var img = new Image();
         img.onload = function() {
           /*This finally draws the image onto the first drawing canvas. The specific canvas is referred to by "context". This is established down in the HTML part of the file just under the first <canvas> tag. If we weren't worried about fixing an iPhone bug we would use context.drawImage(image, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500) instead of drawImageIOSFix */
-                  drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
+        
+          drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
 
 
          //image processing is below//
@@ -109,6 +110,8 @@ img.onload = function() {
 
   // Draw the image on the canvas
   ctx.drawImage(img, 0, 0);
+}
+         };
 
  /* // Get the image data of the canvas
   const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -141,7 +144,7 @@ img.onload = function() {
           
           
           
- } // end of img.onload
+        } // end of img.onload
         
         img.src = reader.result;
       } //  end of reader.onload
