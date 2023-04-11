@@ -108,12 +108,11 @@ var img = new Image();
 // Wait for the image to load
 img.onload = function() {
 
-  // Draw the image on the canvas
+  // This draws the image on the canvas
   ctx.drawImage(img, 0, 0);
-}
-         };
 
- /* // Get the image data of the canvas
+
+ // This portion gets the image data of the canvas
   const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
   // Loop through each pixel in the image data
@@ -137,7 +136,7 @@ img.onload = function() {
   downloadLink.download = "blue_image.png";
   downloadLink.href = canvas.toDataURL("image/png");
   downloadLink.click();
-}; */
+}; 
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
           
