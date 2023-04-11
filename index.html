@@ -117,9 +117,9 @@ function detectVerticalSquash(img) {
      
      // Loop through each pixel in the image data *NOTE* this concept and portion of the code was acquired from ChatGBT when I asked how to transform an image in JavaScript to show only its blue aspects.
      // Set the pixel to only show the blue pigment
-    imgData.data[i] = 0;
-    imgData.data[i + 1] = 0;
-    imgData.data[i + 2] = b;
+    data[i] = 0;
+    data[i + 1] = 0;
+    data[i + 2] = b;
   }
 
     ctx2.putImageData(imgData, 0, 0);
